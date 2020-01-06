@@ -1,0 +1,6 @@
+messages:
+  not:
+    found: Message not found
+    found.arguments: Message ot found with arguments - {0} and {1}
+  value:
+    required: Values is Required

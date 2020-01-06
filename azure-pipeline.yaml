@@ -1,0 +1,27 @@
+resources:
+  - repo: self
+    fetchDepth: 15
+
+pool:
+  name: Farol
+  demands:
+    - agent.name -equals anymarket-integration
+
+steps:
+  - script: mvn clean
+    displayName: 'Clean'
+
+  - script: mvn compile
+    displayName: 'Compile'
+
+  - script: mvn test
+    displayName: 'Run tests'
+
+  - script: mvn sonar:sonar -Dsonar.host.url=http://sonarqube.db1.com.br -Dsonar.branch=$(Build.SourceBranchName) -Dsonar.projectName=damage-control -Dsonar.jacoco.reportPaths=target/jacoco.exec
+    displayName: 'Run sonar'
+
+  - script: mvn deploy
+    displayName: Deploy Nexus Release Version
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+trigger:
+  - master

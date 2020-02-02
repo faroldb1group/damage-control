@@ -1,9 +1,10 @@
 package com.db1group.damagecontrol.exception;
 
-import com.db1group.damagecontrol.exception.HttpStatus;
 import com.db1group.fairy.MessageResource;
 
 import java.util.Objects;
+
+import static java.util.Objects.nonNull;
 
 public abstract class RuleException extends RuntimeException {
 
@@ -18,7 +19,7 @@ public abstract class RuleException extends RuntimeException {
     }
 
     public RuleException(String message, HttpStatus httpStatus) {
-        super(MESSAGE_RESOURCE.getMessage(message));
+        super(getMessage(message, null));
         this.httpStatus = httpStatus;
         this.arguments = null;
     }
@@ -28,7 +29,7 @@ public abstract class RuleException extends RuntimeException {
     }
 
     public RuleException(String message, HttpStatus httpStatus, Object[] arguments) {
-        super(MESSAGE_RESOURCE.getMessage(message, arguments));
+        super(getMessage(message, arguments));
         this.httpStatus = httpStatus;
         this.arguments = arguments;
     }
@@ -38,7 +39,7 @@ public abstract class RuleException extends RuntimeException {
     }
 
     public RuleException(String message, Throwable cause, HttpStatus httpStatus) {
-        super(MESSAGE_RESOURCE.getMessage(message), cause);
+        super(getMessage(message, null), cause);
         this.httpStatus = httpStatus;
         this.arguments = null;
     }
@@ -48,9 +49,13 @@ public abstract class RuleException extends RuntimeException {
     }
 
     public RuleException(String message, Throwable cause, HttpStatus httpStatus, Object[] arguments) {
-        super(MESSAGE_RESOURCE.getMessage(message, arguments), cause);
+        super(getMessage(message, arguments), cause);
         this.httpStatus = httpStatus;
         this.arguments = arguments;
+    }
+
+    private static String getMessage(String message, Object[] arguments) {
+        return nonNull(arguments) ? MESSAGE_RESOURCE.getMessage(message, arguments) : MESSAGE_RESOURCE.getMessage(message);
     }
 
     public HttpStatus getHttpStatus() {
@@ -61,7 +66,7 @@ public abstract class RuleException extends RuntimeException {
         return arguments;
     }
 
-    static class Arguments {
+    public static class Arguments {
 
         public static Object[] of(Object o1) {
             return new Object[]{o1};

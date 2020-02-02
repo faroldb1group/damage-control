@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.db1group</groupId>
     <artifactId>damage-control</artifactId>
-    <version>0.0.1-BETA</version>
+    <version>0.0.2-BETA</version>
     <name>damage-control</name>
     <description>Business Validations</description>
 
@@ -12,7 +12,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <org.junit.jupiter.version>5.5.2</org.junit.jupiter.version>
-        <fairy.version>0.0.1-SNAPSHOT</fairy.version>
+        <fairy.version>0.0.2-BETA</fairy.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <org.hibernate.validator.version>6.0.2.Final</org.hibernate.validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>

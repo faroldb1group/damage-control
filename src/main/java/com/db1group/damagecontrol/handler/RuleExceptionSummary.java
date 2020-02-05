@@ -11,7 +11,7 @@ public class RuleExceptionSummary implements Serializable {
 
     private static final long serialVersionUID = -7468871925372737499L;
 
-    private HttpStatus status;
+    private int status;
 
     private Set<String> messages = new HashSet<>();
 
@@ -24,13 +24,13 @@ public class RuleExceptionSummary implements Serializable {
 
     public static RuleExceptionSummary of(HttpStatus status, String cause, Set<String> messages) {
         RuleExceptionSummary summary = new RuleExceptionSummary();
-        summary.status = status;
+        summary.status = status.getValue();
         summary.cause = cause;
         summary.messages = messages;
         return summary;
     }
 
-    public HttpStatus getStatus() {
+    public int getStatus() {
         return status;
     }
 

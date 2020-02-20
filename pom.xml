@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.db1group</groupId>
     <artifactId>damage-control</artifactId>
-    <version>0.0.3-BETA</version>
+    <version>0.0.4.0-BETA</version>
     <name>damage-control</name>
     <description>Business Validations</description>
 
@@ -19,6 +19,7 @@
         <org.glassfish.web.javax.el.version>2.2.6</org.glassfish.web.javax.el.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <org.jacoco.version>0.8.2</org.jacoco.version>
+        <org.mockito.version>3.2.4</org.mockito.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,14 @@
             <version>${org.junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${org.mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

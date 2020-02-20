@@ -96,7 +96,18 @@ public class Rule {
         }
     }
 
+    public static void execute(boolean expression, Executable executable) {
+        if (expression) {
+            executable.execute();
+        }
+    }
+
     private static boolean hasText(String value) {
         return Objects.nonNull(value) && !value.trim().isEmpty();
+    }
+
+    public interface Executable {
+
+        void execute();
     }
 }
